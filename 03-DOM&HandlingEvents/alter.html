@@ -4,10 +4,10 @@
 		<title>Pink Floyd</title>
 		<meta charset="UTF-8">
 	</head>
-	<body>
-		<h1>Another Brick in the Wall</h1>
-		<h3>Pink Floyd</h3>
-		<p>We don't need no education<br>
+	<body ondblclick="changeColor()">
+		<h1 onclick="showText()">Another Brick in the Wall</h1>
+		<h3 onclick="showDescription()">Pink Floyd</h3>
+		<p  oncopy="copyAlert()" id="lyrics" onclick="changeFont()" oncopy>We don't need no education<br>
 		We don't need no thought control<br>
 		No dark sarcasm in the classroom<br>
 		Teachers leave them kids alone<br>
@@ -15,13 +15,38 @@
 		All in all it's just another brick in the wall<br>
 		All in all you're just another brick in the wall</p>
 		
-		<p style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
+		<p style="visibility: hidden;" id="description" onclick="showImage(this)">Pink Floyd were an English rock band formed in London.<br>
 		They achieved international acclaim with their progressive<br>
-		and psychedelic music.</p>
+		and psychedelic music.<br></p>
 		
 		<script>
-			// a JavaScript code here ...
+			function showText(){
+				const fullTitle = ' (Part 2)';
+            document.getElementsByTagName('h1')[0].innerHTML += fullTitle;
+			}
+
+			function showDescription(){
+				 document.getElementById('description').style.visibility = "visible";
+			}
+
+			function changeFont(){
+				document.getElementById('lyrics').style.fontStyle = 'italic';
+			}
+
+			function changeColor(){
+				document.body.style.backgroundColor = "yellow";
+			}
+
+			function copyAlert(){
+				window.alert("Kopiowanie zabronione <łee łoo>");
+			}
 			
+			function showImage(element){
+            const img = document.createElement('img');
+            img.src = 'https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg';
+            element.appendChild(img);
+        }
+
 		</script>
 	</body>
 </html>
