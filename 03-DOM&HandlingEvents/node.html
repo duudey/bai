@@ -6,8 +6,38 @@
 	</head>
 	<body>
 		<script>
-			// a JavaScript code here ...
-			
+			function tableCreate()
+			{
+				var table = document.createElement('table');
+				table.style.borderCollapse = 'collapse';
+				table.style.border = '1px solid black';
+				var tableBody = document.createElement('tableBody');
+				var number =1;
+
+				table.appendChild(tableBody);
+
+				for (var i=0; i<2; i++)
+				{
+					var row = document.createElement('tr');
+					row.style.border = '1px solid black';
+					tableBody.appendChild(row);
+
+					for (var j=0; j<2; j++)
+					{
+						var td = document.createElement('td');
+						td.style.border = '1px solid black';
+						td.style.textAlign = 'center';
+						td.style.width = '100px';
+						td.appendChild(document.createTextNode(number));
+						row.appendChild(td);
+						number++;
+					}
+				}
+
+				document.getElementsByTagName("body")[0].appendChild(table)
+			}
+
+			tableCreate();
 		</script>
 	</body>
 </html>
