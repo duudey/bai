@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>List of people</title>
+</head>
+
+<body>
+    <button type="button" onclick="connect()">Display list of people</button>
+    <ol>
+    </ol>
+
+    <script>
+        function connect() {
+            var method = 'GET';
+            var URL ='https://gist.githubusercontent.com/duudey/e6771ca1b0430b986352b87bcdd88885/raw/7ac035bc7f831d77255edf6c796d99fdb4d86104/people.json';
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () { display(this); }
+            xhr.open(method, URL);
+            xhr.send();
+        }
+
+        function display(r) {
+            if (r.readyState == 4 && r.status == 200) {
+                const response = JSON.parse(r.response);
+                const ol = document.getElementsByTagName('ol')[0];
+                for (let i of response) {
+                    const k = document.createElement('li');
+                    k.innerHTML = `${i.name} ${i.surname.toUpperCase()}, ${i.country}`;
+                    ol.appendChild(k);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
+
